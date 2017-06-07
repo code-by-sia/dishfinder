@@ -1,0 +1,11 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# misc
+.DS_Store
+.env
+*.swp
+npm-debug.log*

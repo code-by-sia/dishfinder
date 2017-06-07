@@ -1,0 +1,48 @@
+.search-bar {
+	display: flex;
+	height: 35px;
+	padding: 5px;
+	background: white;
+	border-radius: 5px;
+}
+
+.search-bar .section {
+	flex: 1;
+	line-height: 35px;
+}
+
+.search-bar .section:last-child{
+	border-left: solid thin #ccc;
+
+}
+
+.search-bar .section > span {
+	display: block;
+	font-size: 18px;
+}
+
+.search-bar .section > span.label {
+	float: left;
+	font-weight: bold;
+	margin:0 7px 0 10px;
+	color: #777;
+}
+
+.search-bar .section > span.input{
+	overflow: hidden;
+	position: relative;
+	display: block;
+}
+
+.search-bar .section > span.input input{
+	border: none;
+	outline: none;
+	display: block;
+	background: transparent;
+	width: 100%;
+	line-height: 35px;
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
