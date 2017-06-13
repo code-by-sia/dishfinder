@@ -17,6 +17,7 @@ class Search extends Component {
 
     const subject  = props.match.params.subject;
     const location  = props.match.params.location;
+    this.lastSearchReqId = 0;
 
     this.state = {
       coords:null,
@@ -50,15 +51,21 @@ class Search extends Component {
   }
 
   findrestaurants(){
-    let {subject,location} = this.state.search;
+    if(!this.state.search.location || !this.state.search.subject){
+      return;
+    }
 
+    let {subject,location} = this.state.search;
+    let lastSearchReqId = this.lastSearchReqId  = this.lastSearchReqId + 1;
     Services.search(location,subject)
       .then(result => result.json())
-      .then(json => this.processrestaurants(json));
+      .then(json => this.processrestaurants(json,lastSearchReqId));
   }
 
-  processrestaurants(mapMarkers){
-    this.setState({'mapMarkers':mapMarkers});
+  processrestaurants(mapMarkers,reqId){
+    if(reqId == this.lastSearchReqId){
+      this.setState({'mapMarkers':mapMarkers});
+    }
   }
 
   onMapLoaded(){
